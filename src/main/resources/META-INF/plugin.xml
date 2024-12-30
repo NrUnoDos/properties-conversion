@@ -1,18 +1,20 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.nrunodos.propertiesconversion</id>
-    <name>properties-conversion</name>
+    <id>de.nrunodos.plugins</id>
+    <name>Spring Properties Conversion</name>
+    <description>Adds a refactoring option to convert Spring property files (.properties) to YAML format.</description>
     <vendor>nrunodos</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
+    <actions>
+        <action id="ConvertPropertiesToYaml"
+                class="de.nrunodos.plugins.ConvertPropertiesToYamlAction"
+                text="Convert Properties to YAML"
+                description="Convert .properties file to .yaml format">
+            <add-to-group group-id="RefactoringMenu" anchor="last"/>
+        </action>
+    </actions>
+
     <resource-bundle>messages.MyBundle</resource-bundle>
-
-    <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.nrunodos.propertiesconversion.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-    </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.nrunodos.propertiesconversion.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
 </idea-plugin>
